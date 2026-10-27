@@ -1,0 +1,130 @@
+[gd_scene format=3 uid="uid://d2x1jwr8htwe1"]
+
+[ext_resource type="Script" uid="uid://c5kkby1qibocn" path="res://levels/objects/door/exit_door.gd" id="1_yckxu"]
+[ext_resource type="Texture2D" uid="uid://c1ilwd5wqggpq" path="res://assets/sprites/door/closing.png" id="2_bnw3t"]
+[ext_resource type="Texture2D" uid="uid://dvxpyrrbvbfqo" path="res://assets/sprites/door/idle.png" id="3_w0r6x"]
+[ext_resource type="Texture2D" uid="uid://ca8bjsnpsw6hy" path="res://assets/sprites/door/opening.png" id="4_hr4hp"]
+[ext_resource type="Script" uid="uid://b2eobbyacfwr1" path="res://scripts/interactive_area_3d.gd" id="5_ktl8l"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wrkjf"]
+atlas = ExtResource("2_bnw3t")
+region = Rect2(0, 0, 46, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trgux"]
+atlas = ExtResource("2_bnw3t")
+region = Rect2(46, 0, 46, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1bvc4"]
+atlas = ExtResource("2_bnw3t")
+region = Rect2(92, 0, 46, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fh3w0"]
+atlas = ExtResource("3_w0r6x")
+region = Rect2(0, 0, 46, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vj2me"]
+atlas = ExtResource("4_hr4hp")
+region = Rect2(0, 0, 46, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cxfwy"]
+atlas = ExtResource("4_hr4hp")
+region = Rect2(46, 0, 46, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_chehp"]
+atlas = ExtResource("4_hr4hp")
+region = Rect2(92, 0, 46, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8nmfm"]
+atlas = ExtResource("4_hr4hp")
+region = Rect2(138, 0, 46, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a47vs"]
+atlas = ExtResource("4_hr4hp")
+region = Rect2(184, 0, 46, 56)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f0ow7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wrkjf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trgux")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1bvc4")
+}],
+"loop": 0,
+"name": &"closing",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fh3w0")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vj2me")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cxfwy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_chehp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8nmfm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a47vs")
+}],
+"loop": 0,
+"name": &"opening",
+"speed": 10.0
+}]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e52mr"]
+size = Vector3(2.8, 3.5, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vfl6a"]
+size = Vector3(2.4, 2.4, 1.6)
+
+[node name="Exit Door" type="Node3D" unique_id=1844057634]
+script = ExtResource("1_yckxu")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1989804384]
+offset = Vector2(0, 28)
+pixel_size = 0.0625
+billboard = 1
+shaded = true
+alpha_cut = 1
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_f0ow7")
+animation = &"idle"
+frame_progress = 0.27953047
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1824705946]
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=510973748]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
+shape = SubResource("BoxShape3D_e52mr")
+
+[node name="InteractiveArea3D" type="Area3D" parent="." unique_id=1038942103]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.2)
+script = ExtResource("5_ktl8l")
+prompt_height = 4.0
+metadata/_custom_type_script = "uid://b2eobbyacfwr1"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractiveArea3D" unique_id=1743180063]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+shape = SubResource("BoxShape3D_vfl6a")
+
+[node name="Spawn" type="Marker3D" parent="." unique_id=408632348]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 3.2)
+
+[connection signal="interacted" from="InteractiveArea3D" to="." method="_on_interacted"]

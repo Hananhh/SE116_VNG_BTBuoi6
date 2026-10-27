@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://duucsh7q3btly"]
+
+[ext_resource type="PackedScene" uid="uid://b4teqpja7tefw" path="res://levels/objects/platforms/moving_platforms.tscn" id="1_w3fne"]
+[ext_resource type="Script" uid="uid://bm0j0krbxxqn7" path="res://levels/objects/platforms/moving_platforms_interact.gd" id="2_maaul"]
+[ext_resource type="Script" uid="uid://b2eobbyacfwr1" path="res://scripts/interactive_area_3d.gd" id="3_bta5i"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pfbc4"]
+size = Vector3(4, 0.5, 6)
+
+[node name="MovingPlatformsInteract" unique_id=3536913 instance=ExtResource("1_w3fne")]
+script = ExtResource("2_maaul")
+offset = Vector3(0, 0, 4)
+
+[node name="InteractiveArea3D" type="Area3D" parent="." index="2" unique_id=1883381815]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.1999998)
+script = ExtResource("3_bta5i")
+prompt_height = 4.0
+metadata/_custom_type_script = "uid://b2eobbyacfwr1"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractiveArea3D" index="0" unique_id=595736045]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1.21)
+shape = SubResource("BoxShape3D_pfbc4")
+
+[connection signal="interacted" from="InteractiveArea3D" to="." method="_on_interacted"]

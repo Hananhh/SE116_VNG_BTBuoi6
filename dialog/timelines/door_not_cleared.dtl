@@ -1,0 +1,7 @@
+if not StageManager.is_stage_cleared:
+    foxy: Cánh cửa vẫn chưa mở sao?
+    foxy: Vẫn còn quái vật đang canh giữ khu vực này!
+    foxy: Ta hiểu rồi. Ta phải đánh bại tất cả chúng trước!
+
+else:
+    foxy: Tuyệt! Cửa đã mở rồi. Ta có thể tiếp tục hành trình!

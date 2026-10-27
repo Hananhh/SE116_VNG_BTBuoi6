@@ -1,0 +1,2 @@
+if not GameManager.is_door_unlocked("gate"):
+    foxy: Cửa khóa rồi... Hãy hỏi Nấm ở làng mới biết cách mở cửa.

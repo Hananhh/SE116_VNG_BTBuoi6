@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://2pyd24ox7anl"]
+
+[ext_resource type="PackedScene" path="res://scenes/objects/trap.tscn" id="1_i4aac"]
+
+[sub_resource type="Curve3D" id="Curve3D_x0qyq"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, -1.5, 0, 0, 0, 0, 0, 0, 0, 8, -4, 0),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="Animation" id="Animation_nf17i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path3D/PathFollow3D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_b433s"]
+resource_name = "move"
+length = 5.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path3D/PathFollow3D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 4.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8onk6"]
+_data = {
+&"RESET": SubResource("Animation_nf17i"),
+&"move": SubResource("Animation_b433s")
+}
+
+[node name="PathTrap" type="Node3D" unique_id=1624163087]
+
+[node name="Path3D" type="Path3D" parent="." unique_id=1748887002]
+curve = SubResource("Curve3D_x0qyq")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D" unique_id=2106307240]
+rotation_mode = 0
+loop = false
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Path3D/PathFollow3D" unique_id=2001202720]
+remote_path = NodePath("../../../Trap")
+update_rotation = false
+update_scale = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1845446823]
+callback_mode_process = 0
+libraries/ = SubResource("AnimationLibrary_8onk6")
+autoplay = &"move"
+
+[node name="Trap" parent="." unique_id=1413867582 instance=ExtResource("1_i4aac")]

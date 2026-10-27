@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bgi3sivco4h0p"]
+
+[ext_resource type="Script" uid="uid://clw03abs2j8ss" path="res://scripts/base_character.gd" id="1_base"]
+
+[node name="BaseCharacter" type="CharacterBody3D" unique_id=1127845531]
+script = ExtResource("1_base")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=132524751]
+pixel_size = 0.0625
+billboard = 1
+shaded = true
+alpha_cut = 1
+texture_filter = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=801407286]
+
+[node name="Direction" type="Node3D" parent="." unique_id=462131342]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1493736478]
+
+[node name="States" type="Node" parent="." unique_id=1172581280]

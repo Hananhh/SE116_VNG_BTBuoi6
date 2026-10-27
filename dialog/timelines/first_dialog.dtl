@@ -1,0 +1,9 @@
+join  center
+mushroom: Character1\:\
+Hello there!
+- Choice1
+	join foxy center
+	Character 2\:\
+	Responses to choice 1
+- Choice2
+	mushroom: End.

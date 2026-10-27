@@ -1,0 +1,20 @@
+if GameManager.is_door_unlocked("exit"):
+	mushroom: Cáo quay lại rồi sao! Ngươi đã tiêu diệt hết quái vật rồi!
+	mushroom: Cánh cửa sang đảo bên kia đã mở rồi đó.
+	foxy: Tuyệt! Ta sẽ tiếp tục hành trình tìm kiếm những người đồng đội của mình.
+	mushroom: Hãy đi xuống cánh cửa dưới đồi để dịch chuyển sang Vùng đất Cua.
+	mushroom: Hãy cẩn thận với đàn cua dữ và những quái vật hung tợn ở phương Bắc nhé!
+	foxy: Ta nhất định sẽ cứu được mọi người!
+	- Ta muốn nhận chìa khóa và tiếp tục hành trình!
+		do GameManager.unlock_door("exit")
+		mushroom: Được thôi! Đây là chìa khóa. Hãy giữ nó thật cẩn thận nhé!
+		foxy: Cảm ơn Nấm! Ta sẽ không để những người đồng đội phải chờ lâu hơn nữa.
+		mushroom: Hãy đi xuống cánh cửa dưới đồi để dịch chuyển sang Vùng đất Cua.
+		mushroom: Hãy cẩn thận với đàn cua dữ và những hiểm nguy ở phương Bắc!
+		foxy: Ta nhất định sẽ cứu được mọi người!
+
+
+	- Ta muốn khám phá thêm một chút.
+	foxy: Ta muốn kiểm tra khu vực này thêm một lần nữa trước khi rời đi.
+	mushroom: Được thôi, Foxy! Nhưng hãy nhớ rằng những người đồng đội của cháu vẫn đang gặp nguy hiểm.
+	foxy: Ta hiểu rồi. Ta sẽ quay lại khi sẵn sàng tiếp tục hành trình.
